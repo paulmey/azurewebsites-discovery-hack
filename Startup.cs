@@ -13,7 +13,7 @@ namespace OwinDuplex
     {
         public void Configuration(IAppBuilder app)
         {
-            app.Use<ReflectNetMiddleware>(Environment.GetEnvironmentVariable("CLUSTERHOSTNAME") ?? "localhost:28704");
+            app.Use<ReflectNetMiddleware>(Environment.GetEnvironmentVariable("WEBSITE_HOSTNAME") ?? "localhost:28704");
             app.Use(NetworkInfoHandler);
             app.UseWelcomePage();
         }

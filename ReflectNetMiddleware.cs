@@ -27,7 +27,7 @@ namespace OwinDuplex
         public ReflectNetMiddleware(OwinMiddleware next, string clusterHostAndPort, string identity)
             : base(next)
         {
-            _me = identity ?? Dns.GetHostName();
+            _me = identity ?? Environment.GetEnvironmentVariable("WEBSITE_INSTANCE_ID") ?? Dns.GetHostName();
             _reflectUri = string.Format("ws://{0}/{1}", clusterHostAndPort, reflect);
             _buildTask = BuildNetwork();
         }
